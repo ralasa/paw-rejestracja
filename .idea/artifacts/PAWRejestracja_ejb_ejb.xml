@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="PAWRejestracja-ejb:ejb">
+    <output-path>$PROJECT_DIR$/PAWRejestracja-ejb/target</output-path>
+    <root id="archive" name="PAWRejestracja-ejb-1.0.jar">
+      <element id="artifact" artifact-name="PAWRejestracja-ejb:ejb exploded" />
+    </root>
+  </artifact>
+</component>

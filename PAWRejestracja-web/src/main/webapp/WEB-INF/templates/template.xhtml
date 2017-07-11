@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html     xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:p="http://primefaces.org/ui">
+
+  <h:head>		
+    <h:outputStylesheet library="css" name="main.css" />
+    <h:outputStylesheet library="css" name="admin.css" />
+  </h:head>
+
+  <h:body>
+    <div id="header">
+    </div>
+
+    <h:form id="menu_form">
+      <!--<ui:insert name="header">-->
+        <ui:include src="/header.xhtml"/>
+      <!--</ui:insert>-->
+      <p:layout>
+
+
+        <p:layoutUnit position="north" size="100" resizable="true" collapsible="false">
+          <h:outputText style="font-weight: bold; float: left;" value="Jesteś zalogowany jako&nbsp;" />
+          <h:outputText style="font-weight: bold; float: left;" id="wyloguj" value="#{usersManagedBean.username} " />
+          <br></br>
+          <p:commandLink update="wyloguj" action="#{usersManagedBean.logout()}" value="wyloguj" />
+
+        </p:layoutUnit>
+
+        <p:layoutUnit position="west" size="200" header=
+                      "Menu" resizable="true" collapsible="false">
+          <a style="display: block; font-weight: bold; float: left;" href="student-list.xhtml">Lista studentów</a>
+          <a style="display: block; font-weight: bold; float: left;" href="add.xhtml">Dodaj studenta</a>
+
+        </p:layoutUnit>
+
+        <p:layoutUnit position="center">
+          <ui:insert name="content">
+            Default Content
+          </ui:insert>
+        </p:layoutUnit>
+
+        <ui:include src="/footer.xhtml"/>
+
+      </p:layout>
+
+    </h:form>
+
+  </h:body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewParam name="page_id" value="#{rejestracjaManagedBean2.viewParam}"/>
+</f:metadata>
+<h:head>
+    <h:outputStylesheet library="css" name="main.css" />
+
+</h:head>
+
+<h:body>
+    <ui:composition
+            template="../WEB-INF/templates/template_confirmation.xhtml"
+            xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+
+        <ui:include src="../header.xhtml"/>
+        <ui:define name="content">
+
+
+            <div id="confirmation">
+                <h2>
+                    Potwierdzenie rejestracji
+                </h2>
+
+                <table id="confirmation_details">
+
+                    <tbody>
+                    <tr>
+                        <th width="15%"><label>Imię:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).imie}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Nazwisko:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).nazwisko}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Obywatelstwo:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).obywatelstwo}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Data urodzenia:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).dataurodzenia}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>PESEL:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).pesel}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>NIP:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).nip}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Telefon:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).telefon}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>E-mail:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).email}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Adres zamieszkania:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).adreszamieszkania}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Adres do korespondencji:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).adreskorespondencyjny}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Wykształcenie:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).wyksztalcenie}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Zatrudnienie:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).zatrudnienie}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>W razie wypadku powiadomić:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).uprawnienia}</td>
+                    </tr>
+                    <tr>
+                        <th width="15%"><label>Rodzina:</label></th>
+                        <td><h:column/>#{rejestracjaManagedBean2.zarejestrowanyStudent(rejestracjaManagedBean2.viewParam).rodzina}</td>
+                    </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+            <br/>
+            <h:commandButton class="command-link" action="#{rejestracjaManagedBean2.createPDF}"
+                             value="Pobierz potwierdzenie w PDF" />
+            <br/>
+            <p:commandButton action="#{rejestracjaManagedBean2.powrotDoStronyGlownej}"
+                             value="Powrót do strony głównej"/>
+
+
+        </ui:define>
+
+    </ui:composition>
+</h:body>
+</html>

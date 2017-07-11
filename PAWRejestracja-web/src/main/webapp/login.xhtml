@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+
+
+
+
+<h:head>
+    <title>Logowanie do panelu administracyjnego</title>
+
+</h:head>
+<h:body>
+
+    <h:panelGroup layout="block" style="width:400px; margin: 10% auto 10% auto;">
+        <h:form id="loginForm">
+
+            <p:growl id="msg" showDetail="false" life="5000"/>
+            <p:panel header="Logowanie do panelu administracyjnego" style="width: 400px;">
+
+                <h:panelGrid id="loginPanel" columns="2">
+
+                    <h:outputText value="Nazwa użytkownika "/>
+
+                    <p:inputText id="username" value="#{usersManagedBean.username}" required="true"
+                                 requiredMessage="Nazwa użytkownika jest wymagana"
+                                 validatorMessage="Nazwa użytkownika: Dozwolone są tylko wielkie i małe litery oraz liczby (bez odstępów)">
+                        <p:clientValidator event="keyup"/>
+                        <f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ\-_\.0-9]+$"/>
+                    </p:inputText>
+
+
+                    <h:outputText value="Hasło"/>
+
+                    <p:password id="password" value="#{usersManagedBean.password}" feedback="false" required="true"
+                                requiredMessage="Hasło jest wymagane"></p:password>
+
+                    <!--<p:spacer />
+                    <p:spacer />
+
+
+
+                    <p:spacer />-->
+
+
+                </h:panelGrid>
+
+                <p:captcha id="captcha" language="pl" required="true"
+                           requiredMessage="Zaznacz pole 'Nie jestem robotem'"
+                           validatorMessage="Weryfikacja użytkownika nie powioda się"/>
+
+
+                <p:commandButton actionListener="#{captchaView.submit}" action="#{usersManagedBean.login}" value="Login"
+                                 update="loginForm"
+                                 ajax="false" icon="ui-icon-check" validateClient="true"></p:commandButton>
+
+            </p:panel>
+
+        </h:form>
+    </h:panelGroup>
+
+</h:body>
+
+</html>

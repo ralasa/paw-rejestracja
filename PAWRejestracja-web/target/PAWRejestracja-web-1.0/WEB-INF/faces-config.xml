@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is not required if you don't need any extra configuration. -->
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="         http://java.sun.com/xml/ns/javaee         http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <!-- This descriptor activates the JSF 2.0 Servlet 
+ Write your navigation rules here. You are encouraged to use CDI for 
+      creating @Named managed beans. -->
+ <navigation-rule>
+  <display-name>login.xhtml</display-name>
+  <from-view-id>/login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/student-list.xhtml</to-view-id>
+   <redirect />
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>failure</from-outcome>
+   <to-view-id>/login.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+  <navigation-rule>
+  <display-name>index.jsp</display-name>
+  <from-view-id>/index.jsp</from-view-id>
+  <navigation-case>
+   <to-view-id>/add.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+
+</faces-config>

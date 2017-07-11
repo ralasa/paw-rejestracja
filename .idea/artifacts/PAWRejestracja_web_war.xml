@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PAWRejestracja-web:war">
+    <output-path>$PROJECT_DIR$/PAWRejestracja-web/target</output-path>
+    <root id="archive" name="PAWRejestracja-web-1.0.war">
+      <element id="artifact" artifact-name="PAWRejestracja-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="PAWRejestracja-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/PAWRejestracja-ear/target/PAWRejestracja</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="PAWRejestracja-ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/PAWRejestracja-ear/target/PAWRejestracja/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="archive" name="PAWRejestracja-web-1.0.war">
+        <element id="artifact" artifact-name="PAWRejestracja-web:war exploded" />
+      </element>
+      <element id="archive" name="PAWRejestracja-ejb-1.0.jar">
+        <element id="artifact" artifact-name="PAWRejestracja-ejb:ejb exploded" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="Maven: org.jboss.spec.javax.faces:jboss-jsf-api_2.1_spec:2.0.9.Final" />
+      </element>
+    </root>
+  </artifact>
+</component>

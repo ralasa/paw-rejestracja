@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<f:metadata>
+	<f:viewParam name="id" value="#{rejestracjaManagedBean.id}" />
+</f:metadata>
+
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml"
+					xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+
+		<ui:include src="header.xhtml" />
+		<ui:define name="content">
+
+
+			<div id="sf_admin_container">
+				<div id="sf_admin_content">
+					<div id="login_form">
+						<h2>
+							Szczegóły studenta (ID&nbsp;
+							<h:outputText value="#{rejestracjaManagedBean.id}" />)
+						</h2>
+
+							<table>
+								<tfoot class="stdfooter">
+									<tr>
+										<td colspan="2">
+											<h:commandLink actionListener="#{rejestracjaManagedBean.createPDF}" value="Pobierz potwierdzenie w PDF" />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<h:commandLink action="#{rejestracjaManagedBean.powrotDoEdycjiStudenta}" value="Powrót do edycji studenta" />
+										</td>
+									</tr>
+								</tfoot>
+								<tbody>									
+									<tr>
+										<th width="50%"><label>Imie:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.imie}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Nazwisko:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.nazwisko}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Obywatelstwo:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.obywatelstwo}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Data urodzenia:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.dataurodzenia}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>PESEL:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.pesel}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>NIP:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.nip}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Telefon:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.telefon}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>E-mail:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.email}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Adres zamieszkania:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.adreszamieszkania}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Adres do korespondencji:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.adreskorespondencyjny}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Wykształcenie:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.wyksztalcenie}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Zatrudnienie:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.zatrudnienie}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>W razie wypadku powiadomić:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.uprawnienia}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Rodzina:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.rodzina}</td>
+									</tr>
+									<tr>
+										<th width="50%"><label>Komentarz:</label></th>
+										<td><h:column />#{rejestracjaManagedBean.komentarz}</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						
+
+					</div>
+				</div>
+			</div>
+
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

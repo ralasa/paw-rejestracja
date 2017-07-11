@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<f:metadata>
+	<f:viewParam name="id" value="#{rejestracjaManagedBean.id}" />
+</f:metadata>
+
+<h:body>
+ 	<ui:composition template="/WEB-INF/templates/template.xhtml"
+            xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:p="http://primefaces.org/ui">
+		<ui:include src="header.xhtml" />
+		<ui:define name="content">
+
+			<h:form id="edit-student-form" enctype="multipart/form-data">
+
+				<p:panel id="form_edit" header="Edycja danych studenta">
+
+					<h:panelGrid columns="3" columnClasses="label, value, message">
+
+						<h:outputText value="Imię: *"/>
+						<p:inputText id="imie" value="#{rejestracjaManagedBean.imie}" required="true" requiredMessage="Imię jest wymagane"
+									 validatorMessage="Imię: Proszę używać tylko wielkich i małych liter">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$"/>
+						</p:inputText>
+						<p:message for="imie" />
+
+
+						<h:outputText value="Nazwisko: *"/>
+						<p:inputText id="nazwisko" value="#{rejestracjaManagedBean.nazwisko}" required="true"
+									 requiredMessage="Nazwisko jest wymagane"
+									 validatorMessage="Nazwisko: Proszę używać tylko wielkich i małych liter">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ-]+$"/>
+						</p:inputText>
+						<p:message for="nazwisko" />
+
+
+						<h:outputText value="Obywatelstwo *"/>
+						<p:inputText id="obywatelstwo" value="#{rejestracjaManagedBean.obywatelstwo}" required="true"
+									 requiredMessage="Obywatelstwo jest wymagane"
+									 validatorMessage="Obywatelstwo:  Proszę użyć tylko znaków alfabetycznych">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ-]+$"/>
+						</p:inputText>
+						<p:message for="obywatelstwo" />
+
+
+						<h:outputText value="Data urodzenia: *"/>
+						<p:inputMask id="dataUrodzenia" value="#{rejestracjaManagedBean.dataurodzenia}" required="true"
+									 requiredMessage="Data urodzenia jest wymagana"
+									 validatorMessage="Data urodzenia jest nieprawidłowa" mask="9999-99-99" binding="#{date}">
+							<f:validateRegex
+									pattern="^(19|20)[0-9][0-9]-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])"/>
+							<p:clientValidator event="keyup"/>
+							<f:validator validatorId="DateValidator"/>
+
+						</p:inputMask>
+						<p:message for="dataUrodzenia" />
+
+
+						<h:outputText value="Pesel: *"/>
+						<p:inputMask id="pesel" value="#{rejestracjaManagedBean.pesel}" mask="99999999999" required="true" binding="#{numerPesel}"
+									 requiredMessage="Numer PESEL jest wymagany"
+									 validatorMessage="Numer PESEL jest nieprawidłowy">
+							<f:validateRegex pattern="^[0-9]{11}$"/>
+							<!--<f:validator validatorId="PeselValidator"/>-->
+							<p:clientValidator event="keyup"/>
+						</p:inputMask>
+						<p:message for="pesel"><p:message for="dataPesel"/></p:message>
+
+
+						<h:outputText value="NIP: *"/>
+						<p:inputMask id="nip" value="#{rejestracjaManagedBean.nip}" mask="9999999999" required="true"
+									 requiredMessage="Numer NIP jest wymagany"
+									 validatorMessage="Numer NIP jest nieprawidłowy">
+							<f:validateRegex pattern="^[0-9]{10}$"/>
+							<f:validator validatorId="NipValidator"/>
+							<p:clientValidator event="keyup"/>
+						</p:inputMask>
+						<p:message for="nip" />
+
+
+						<h:outputText value="Telefon: *"/>
+						<p:inputText id="telefon" value="#{rejestracjaManagedBean.telefon}" required="true"
+									 requiredMessage="Nr telefonu jest wymagany"
+									 validatorMessage="Telefon: Proszę użyć tylko cyfr (od 9 do 18 znaków)">
+							<f:validateRegex pattern="^[0-9]{9,18}"/>
+							<f:validateLength minimum="8" maximum="18" />
+							<p:clientValidator event="keyup"/>
+						</p:inputText>
+						<p:message for="telefon" />
+
+
+						<h:outputText value="E-mail: *"/>
+						<p:inputText id="email" value="#{rejestracjaManagedBean.email}" required="true"
+									 requiredMessage="Adres e-mail jest wymagany"
+									 validatorMessage="Proszę wpisać poprawny adres e-mail">
+							<f:validateRegex pattern="^[a-zA-Z0-9\.-]+@[a-zA-Z0-9\.-]+\.[a-zA-Z]+$"/>
+							<p:clientValidator event="keyup"/>
+						</p:inputText>
+						<p:message for="email" />
+
+
+						<h:outputText value="Adres zamieszkania: "/>
+						<p:inputTextarea id="adresZamieszkania" rows="4" cols="30"
+										 value="#{rejestracjaManagedBean.adreszamieszkania}"
+										 validatorMessage="Adres: Dozwolone znaki alfabetyczne,cyfry oraz ',./-' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="adresZamieszkania" />
+
+
+						<h:outputText value="Adres do korespondencji: "/>
+						<p:inputTextarea id="adresKorespondencyjny" rows="4" cols="30"
+										 value="#{rejestracjaManagedBean.adreskorespondencyjny}"
+										 validatorMessage="Adres do korespondencji: Dozwolone znaki alfabetyczne,cyfry oraz ',./-' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="adresKorespondencyjny" />
+
+
+						<h:outputText value="Wykształcenie: "/>
+						<p:inputTextarea id="wyksztalcenie" rows="4" cols="30" value="#{rejestracjaManagedBean.wyksztalcenie}"
+										 validatorMessage="Wykształcenie: Dozwolone znaki alfabetyczne,cyfry oraz ',./-' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="wyksztalcenie" />
+
+
+						<h:outputText value="Zatrudnienie: "/>
+						<p:inputTextarea id="zatrudnienie" rows="4" cols="30" value="#{rejestracjaManagedBean.zatrudnienie}"
+										 validatorMessage="Zatrudnienie: Dozwolone znaki alfabetyczne,cyfry oraz ',./-' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="zatrudnienie" />
+
+
+						<h:outputText value="W razie wypadku powiadomić: "/>
+						<p:inputTextarea id="uprawnienia" rows="4" cols="30" value="#{rejestracjaManagedBean.uprawnienia}"
+										 validatorMessage="W razie wypadku powiadomić: Dozwolone znaki alfabetyczne,cyfry oraz ',./-' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="uprawnienia" />
+
+
+						<h:outputText value="Rodzina: "/>
+						<p:inputTextarea id="rodzina" rows="4" cols="30" value="#{rejestracjaManagedBean.rodzina}"
+										 validatorMessage="Rodzina: Proszę użyć tylko znaków alfabetycznych,cyfr oraz ',./' ">
+							<p:clientValidator event="keyup"/>
+							<f:validateRegex pattern="^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-/\., \r\n]*$"/>
+						</p:inputTextarea>
+						<p:message for="rodzina" />
+
+						<h:inputHidden id="dataPesel" value="true">
+							<f:validator validatorId="PeselValidator" />
+							<f:attribute name="date" value="#{date}" />
+							<f:attribute name="numerPesel" value="#{numerPesel}" />
+
+						</h:inputHidden>
+					</h:panelGrid>
+				</p:panel>
+
+				<p:commandButton update="form_edit" value="Aktualizuj" action="#{rejestracjaManagedBean.update}" icon="ui-icon-check" validateClient="true"/>
+
+
+
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

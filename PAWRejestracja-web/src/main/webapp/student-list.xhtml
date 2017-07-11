@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="page" value="#{rejestracjaManager.page}"/>
+	<f:viewParam name="removeId" value="#{rejestracjaManager.removeId}"/>
+</f:metadata>
+
+
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+		<ui:define name="content">
+		
+
+			<div id="sf_admin_container">
+				<div id="sf_admin_content">
+					<h2>Lista zarejestrowanych studentów</h2>
+
+	            					 
+					<div class="sf_admin_list">
+							
+							<h:dataTable var="student" value="#{rejestracjaManager.studentList}" cellspacing="0" rowClasses="odd,even">
+								<h:column>
+									<f:facet name="header">&nbsp;ID&nbsp;</f:facet>
+									&nbsp;#{student.id}
+								</h:column>
+								
+								<h:column>
+									<f:facet name="header">Imie</f:facet>
+									#{student.imie}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Nazwisko</f:facet>
+									#{student.nazwisko}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Nr PESEL</f:facet>
+									#{student.pesel}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Adres e-mail</f:facet>
+									#{student.email}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Numer telefonu</f:facet>
+									#{student.telefon}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Data rejestracji</f:facet>
+									#{student.createdAtAbbr}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Data aktualizacji</f:facet>
+									#{student.updatedAtAbbr}
+								</h:column>
+								 <h:column>
+									<f:facet name="header">&nbsp;Akcja&nbsp;</f:facet>
+									<h:link outcome="edit.xhtml?id=#{student.id}" value="" title="Edytuj">										
+										<h:graphicImage library="img" name="edit.png" />
+									</h:link>
+									
+									<h:link outcome="student-list.xhtml?removeId=#{student.id}" value="" title="Usuń">										
+										<h:graphicImage library="img" name="delete.png" />
+									</h:link>
+									<h:link outcome="details.xhtml?id=#{student.id}" value="" title="Pokaz">										
+										<h:graphicImage library="img" name="list.png" />
+									</h:link>
+								</h:column>
+								 
+									<f:facet name="footer">
+										<h:outputText value="#{rejestracjaManager.tableListCaption}" id="caption1" />
+										&nbsp;&nbsp;&nbsp;
+										<h:link outcome="student-list.xhtml?page=#{rejestracjaManager.firstPage}" value="">
+											<h:graphicImage library="img" name="first.png" />
+										</h:link>
+										&nbsp;
+										<h:link outcome="student-list.xhtml?page=#{rejestracjaManager.previousPage}" value="">
+											<h:graphicImage library="img" name="previous.png" />
+										</h:link>										
+										&nbsp;
+										<h:link outcome="student-list.xhtml?page=#{rejestracjaManager.nextPage}" value="">
+											<h:graphicImage library="img" name="next.png" />
+										</h:link>
+										&nbsp;
+										<h:link outcome="student-list.xhtml?page=#{rejestracjaManager.lastPage}" value="">
+											<h:graphicImage library="img" name="last.png" />
+										</h:link>
+										&nbsp;										
+									</f:facet>
+									
+								
+						
+							</h:dataTable>
+													
+					</div>
+					
+					
+					
+				</div>
+			</div>
+
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

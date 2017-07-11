@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form id="menu_form">
+
+		<div id="wrapper">
+			<div id="header">
+			</div>
+			<div class="login">
+				<a class="login" style="font-weight: bold;" href="../login.xhtml">Logowanie do panelu administracyjnego</a>
+				<br></br>
+			</div>
+			<ui:include src="/header.xhtml" />
+
+
+
+			<div id="main">
+				<div id="content">
+					<ui:insert name="content">
+						Default Content
+					</ui:insert>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+			<ui:include src="/footer.xhtml" />
+
+
+		</div>
+		<!-- wrapper -->
+	</h:form>
+
+
+
+</h:body>
+</html>
